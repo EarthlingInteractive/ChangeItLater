@@ -16,8 +16,8 @@ can be used to set up a new project following this pattern.
 
 Super duper quickstart (prerequisites: PHP 5.4, Composer, Postgres):
 
-```
-git clone https://github.com/EarthlingInteractive/PHPProjectInitializer.git PHPProjectInitializer
+```sh
+git clone https://github.com/EarthlingInteractive/PHPProjectInitializer.git
 PHPProjectInitializer/bin/create-project -i --make everything
 ```
 
