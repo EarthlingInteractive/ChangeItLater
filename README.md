@@ -14,6 +14,14 @@ This is a pattern for developing PHP web applications. The main components of th
 [PHPProjectInitializer](http://github.com/EarthlingInteractive/PHPProjectInitializer)
 can be used to set up a new project following this pattern.
 
+Super duper quickstart (prerequisites: PHP 5.4, Composer, Postgres):
+
+```
+git clone https://github.com/EarthlingInteractive/PHPProjectInitializer.git PHPProjectInitializer
+PHPProjectInitializer/bin/create-project -i --make everything
+```
+
+
 ## Philosophy
 
 The framework should be subservient to the application, not the other way around.
@@ -39,6 +47,7 @@ Routers in Nife-based framework are simply application-defined classes.
 Therefore functions that implement CRUD services should be centralized
 while still allowing special cases without hackery.
 
+
 ## Request-Handling Process
 
 ### Layer 0: Procedural code
@@ -48,6 +57,7 @@ error handlers and otherwise puts the PHP interpreter into a state
 where it's easier to work with, encapsulates the request and context,
 calls layer 1 to handle the request, and spits responses back to the
 browser.
+
 
 ### Layer 1: Request handler
 
@@ -71,6 +81,7 @@ Read: Request and response are immutable, context is mutable, and the
 web service itself is mutable in that it may make modifications to
 itself (e.g. altering database records) in the course of handling a
 request.
+
 
 ### Layer 2: Request handling details
 
@@ -97,6 +108,7 @@ The process of handling a web request is divided into the following steps:
     during (or after, in the case of search results) its invocation
   - If invoking the action throws an exception, that exception is turned
     into a response object and returned.
+
 
 ### Request -> Action parsing
 
@@ -127,6 +139,7 @@ class My_Cool_App_RequestParser {
   }
 }
 ```
+
 
 ### Action invocation
 
