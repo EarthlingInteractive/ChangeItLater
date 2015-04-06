@@ -11,6 +11,9 @@ This is a pattern for developing PHP web applications. The main components of th
 * Response Objects
 * Logging
 
+[PHPProjectInitializer](http://github.com/EarthlingInteractive/PHPProjectInitializer)
+can be used to set up a new project following this pattern.
+
 ## Philosophy
 
 The framework should be subservient to the application, not the other way around.
