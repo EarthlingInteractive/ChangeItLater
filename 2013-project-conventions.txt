@@ -1,0 +1,111 @@
+Project Structure Standardization
+=================================
+
+
+Conventions may include
+-----------------------
+Directory layout
+Branch naming
+Configuration storage
+Resource naming
+- Databases
+- Deployments
+- Users (e.g. demo users, admins)
+
+
+Requirements
+------------
+- Should not be biased towards any specific technologies, languages, or frameworks
+- Should be as simple as possible (small number of concepts, few links between them),
+  but with extensibility in mind
+
+
+
+Proposed Standards
+==================
+
+Directory layout for web applications
+-------------------------------------
+
+bin/       ; command-line utilities useful when working on this app
+build/     ; stuff that is used behind the scenes
+webapp/    ; web application root
+  (assuming a PHP-on-Apache project)
+  lib/     ; application-specific classes
+  vendor/  ; external libraries
+  .htaccess
+  bootstraph.php
+  (images, css, js, etc may go here)
+config/    ; deployment configuration
+
+For PHP projects, I suggest following Composer conventions
+within the webapp/ directory.
+
+
+Branch naming
+-------------
+For Git repos, same convention as on First30:
+Primary branches named "release-<major>.<minor>".
+Tags named "release-<major>.<minor>.<release#>".
+
+Other short-lived branches may exist for feature development or
+technical work, but should follow the lower-case-dash-separated-name
+convention.
+
+Tags should be created sparingly, since once created they spread like
+viruses.
+
+
+Build branches
+--------------
+Generated files should not be kept in the repository except on special
+'build' branches that are targetted for deployments where all the
+development tools are not present or where we want to minimize time
+between pushing the new code and it working (e.g. production).
+
+On projects that follow the separate development/build branch
+approach, build tags should be branched from the release branch, then
+tagged, and the tag name may be postfixed with "-build".  The process
+of converting a dev branch to a build tag should probably be automated.
+
+  release-1.2.2-build
+   *
+    \__________________
+                       \
+  release-1.2.1-build   *
+   *                    |
+    \__________________ *  release-1.2 (branch)
+                       \|
+                        *
+                        |
+
+
+Configuration storage
+---------------------
+I feel like deployment configuration is in practice
+more coupled to its deployment than to a specific version
+of the codebase, and keeping configurations for all deployments
+in the code repository as we have done in the past causes
+some problems:
+
+- Encourages the config/<deployment>/www pattern, which results
+  in duplicate www directories
+
+- Makes switching between branches difficult if one branch lacks
+  the configuration for your deployment
+
+- Makes creating new deployments a pain, as you have to add
+  configuration for it to all branches you might want to work with.
+
+Instead, we should only store example configuration files in the
+repository under config/ (e.g. like config/permissions.php.example),
+excluding actual configuration files.
+
+To ease creation of new deployments, build scripts may be included
+to assist developers in generating new configuration files.
+
+The application should assume safe / fail-fast defaults for all
+configuration variables not explicitly specified by the deployment's
+configuration files.  The path to the directory containing the
+application's code should not need to be configured
+(bootstrap.php can use __FILE__, dirname(), etc).
