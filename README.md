@@ -2,9 +2,11 @@
 
 This project documents a framework for developing PHP web applications consisting of conventions for:
 
-- Bootstrapping (initializing error handling and class loaders)
+- Project directory structure
+- Bootstrapping (all the procedural stuff that initializes the environment and kicks off request handling)
 - Request routing
 - Action and response objects
+- Database access
 - Config files
 - View templates (PHP-based)
 - Authentication
