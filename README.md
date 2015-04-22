@@ -43,9 +43,10 @@ possible.
 Template code is provided to help get new projects off the ground
 quickly with the expectation that not all of its components will be
 needed (and those not needed can be deleted), and that those parts
-that are used will evolve over time to suit the needs of the
+that are used will evolve over time to better suit the needs of the
 application.  Code and design patterns that are found to be commonly
-useful may be rolled into later versions of the template project.
+useful may be rolled into libraries or later versions of the template
+project.
 
 Application code calls into library code.  Callbacks into application
 code from library code might sometimes be necessary but should not be
@@ -54,7 +55,8 @@ the norm.  A good example of this is principle in action is the
 configure, which in turn calls your controllers to handle requests.
 Routers in Nife-based framework are simply application-defined classes.
 
-90% of REST services are doing simple CRUD operations, the behavior of which can be entirely defined by:
+90% of REST services are doing simple CRUD operations, the behavior of
+which can be entirely defined by:
 
 1. Metadata about the schema (names, types of classes and fields), and
 2. Authorization rules
