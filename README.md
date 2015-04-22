@@ -175,7 +175,9 @@ implementing some marker interface and having an
 Other actions, such as CRUD ones, won't define their own behavior
 directly, but instead contain declarative information about what they
 are trying to accomplish, such as 'Get user record #12, returning the
-result as JSON, following the JSON-style naming convention
+result as JSON, following the JSON-style naming convention'.  In such
+cases, the component in charge of invoking actions will have to have
+rules for figuring out how to invoke the action based on its data.
 
 
 ## Stuff that needs documenting
