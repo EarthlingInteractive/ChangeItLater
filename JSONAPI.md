@@ -28,3 +28,13 @@ And why I don't think it's worth bothering with.
 - JSONAPI.orgese isn't even a standard, yet.  They're on 'release candidate 3'.
   - The reason it's taking them so long to make an official release is because it's overcomplicated.
   - The last thing we should be doing is standardizing on a convention that's still changing.
+- JSONAPI.org leaves some important bits unspecified
+  - e.g. filtering ('Note: JSON API is agnostic about the strategies
+    supported by a server. The filter query parameter can be used as
+    the basis for any number of filtering strategies.'
+    -- [http://jsonapi.org/format/#fetching-filtering])
+  - e.g. paging
+
+In summary, jsonapi.org defines a bunch of stuff to make your JSON
+harder to deal with, but doesn't specify enough to make a useful
+standard for many parts of an API that our applications rely on.
