@@ -25,7 +25,7 @@ It makes use of several related projects:
 
 ## Super duper quickstart
 
-Prerequisites: PHP 5.4, Composer, Postgres):
+Prerequisites: PHP 5.4, Composer, Postgres.
 
 ```sh
 git clone https://github.com/EarthlingInteractive/PHPProjectInitializer.git
