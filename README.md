@@ -1,20 +1,29 @@
 # The Nife-Based Framework
 
-This is a pattern for developing PHP web applications. The main components of this pattern include:
-* Router
-* Bootstrap file
-* Config files
-* Actions
-* View Templates (php based)
-* Authentication
-* Pattern for Authorization
-* Response Objects
-* Logging
+This project documents a framework for developing PHP web applications consisting of conventions for:
 
-[PHPProjectInitializer](http://github.com/EarthlingInteractive/PHPProjectInitializer)
-can be used to set up a new project following this pattern.
+- Bootstrapping (initializing error handling and class loaders)
+- Request routing
+- Action and response objects
+- Config files
+- View templates (PHP-based)
+- Authentication
+- Authorization
+- Logging
 
-Super duper quickstart (prerequisites: PHP 5.4, Composer, Postgres):
+It makes use of several related projects:
+
+- [PHPProjectInitializer](http://github.com/EarthlingInteractive/PHPProjectInitializer)
+  can be used to set up a new project following this pattern.
+- [PHPTemplateProject](http://github.com/EarthlingInteractive/PHPTemplateProject)
+  contains the template code used by PHPProjectInitializer.
+- [CMIP-REST](https://github.com/EarthlingInteractive/PHPCMIPREST)
+  implements REST API services based on a schema definition.
+
+
+## Super duper quickstart
+
+Prerequisites: PHP 5.4, Composer, Postgres):
 
 ```sh
 git clone https://github.com/EarthlingInteractive/PHPProjectInitializer.git
@@ -24,7 +33,10 @@ PHPProjectInitializer/bin/create-project -i --make everything
 
 ## Philosophy
 
-The framework should be subservient to the application, not the other way around.
+The framework should be subservient to the application, not the other
+way around.  With regard to which specific technologies are used, it
+should provide good suggestions, but otherwise be as unbiased as
+possible.
 
 Template code is provided to help get new projects off the ground
 quickly with the expectation that not all of its components will be
@@ -41,6 +53,7 @@ configure, which in turn calls your controllers to handle requests.
 Routers in Nife-based framework are simply application-defined classes.
 
 90% of REST services are doing simple CRUD operations, the behavior of which can be entirely defined by:
+
 1. Metadata about the schema (names, types of classes and fields), and
 2. Authorization rules
 
@@ -161,5 +174,10 @@ are trying to accomplish, such as 'Get user record #12, returning the
 result as JSON, following the JSON-style naming convention
 
 
+## Stuff that needs documenting
 
-Yaddah yaddah yaddah, more documentation to come.
+- The registry object
+- Database functions and abstractions
+- How to manage config files
+- Best practices for using other packages
+- CMIP-REST (possibly just referring to documentation in its repository)
