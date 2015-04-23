@@ -1,4 +1,4 @@
-# The Nife-Based Framework
+# The Phrebar Framework
 
 This project documents a framework for developing PHP web applications consisting of conventions for:
 
@@ -53,7 +53,7 @@ code from library code might sometimes be necessary but should not be
 the norm.  A good example of this is principle in action is the
 'router'.  Most MVC frameworks provide a router object that you
 configure, which in turn calls your controllers to handle requests.
-Routers in Nife-based framework are simply application-defined classes.
+Routers in Phrebar-based apps are simply application-defined classes.
 
 90% of REST services are doing simple CRUD operations, the behavior of
 which can be entirely defined by:
@@ -81,9 +81,9 @@ browser.
 At a conceptual level, the web service(s) can be thought of as a
 single function-with-side effects that takes a web request and returns
 a web response.  Responses are somewhat easier to encapsulate since we
-control their construction, and the Nife-based framework represents
-them using Nife_HTTP_Response objects (hence the name 'Nife-Based
-Framework').  Requests are harder, since PHP scatters request data
+control their construction, and Phrebar projects represent
+them using Nife_HTTP_Response objects.
+Requests are harder, since PHP scatters request data
 throughout several global variables.  Session variables are tough to
 model as they may be thought of as part of the request or as part of
 the response.  To keep things organized, we'll treat them as 'context'
