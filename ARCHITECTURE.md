@@ -15,6 +15,7 @@ component instances, there's a cicular reference between registry and
 components.  This set of objects comprises the core machinery of our
 system.
 
+```
   ╭────────────╮
   │            │ reg ╭──────────────╮
   │            │◀────│              │
@@ -32,6 +33,7 @@ system.
   │            │────▶│              │
   │            │     ╰──────────────╯
   ╰────────────╯
+```
 
 You must always think of the registy as being to the left of other
 components.  Otherwise you are not Phrebaring correctly.
@@ -42,6 +44,7 @@ normally, putting component construction in the registry keeps things
 simple and unsurprising.
 
 Examples of components:
+
 - mailer
 - database connection
 - object storage system
@@ -52,11 +55,11 @@ for doing so is encoded in Registry#__get.
 
 Components should be named after what they are.  e.g. for a component that manages users...
 
-- Userify <- Wrong!  Should be a noun.
-- User <- Wrong!  This class doesn't represent a user.
-- UserUtil <- Okay!
-- UserModel <- Also okay!
-- UserStuff <- Also okay!  Not descriptive, but not misleading, either.
+- ```Userify``` <- Wrong!  Should be a noun.
+- ```User``` <- Wrong!  This class doesn't represent a user.
+- ```UserUtil``` <- Okay!  Although ```Util``` connotates static methods, so maybe not perfect.
+- ```UserModel``` <- Also okay!
+- ```UserStuff``` <- Also okay!  Not descriptive, but not misleading, either.
 
 ## Loading config files
 
@@ -64,11 +67,13 @@ The registry is also responsible for loading configuration data.
 This is usually from JSON files in a 'config/' directory.  e.g.
 to get the value "Wally World" from config/foo.json containing
 
+```json
   {
     "bar": {
       "baz": "Wally World"
     }
   }
+```
 
 you could call $registry->getConfig('foo/bar/baz').
 
@@ -107,5 +112,5 @@ around rather than being hard-wired.)
 
 To summarize:
 
-System components = machinery that does the processing
-Data objects = the stuff being processed
+- System components = machinery that does the processing
+- Data objects = the stuff being processed
