@@ -19,9 +19,15 @@ It makes use of several related projects:
   can be used to set up a new project following this pattern.
 - [PHPTemplateProject](http://github.com/EarthlingInteractive/PHPTemplateProject)
   contains the template code used by PHPProjectInitializer.
+- [PHPProjectUtils](http://github.com/EarthlingInteractive/PHPProjectUtils)
+  contains utility scripts for building a project, including the running of database upgrade scripts.
+- [PHPSchema](https://github.com/EarthlingInteractive/PHPSchema)
+  defines classes for working with schema metadata.
 - [CMIP-REST](https://github.com/EarthlingInteractive/PHPCMIPREST)
   implements REST API services based on a schema definition.
-
+- [PHPStorage](https://github.com/EarthlingInteractive/PHPStorage)
+  is the storage abstraction layer used by CMIP-REST, but is
+  also made available for use directly from application PHP code.
 
 ## Super duper quickstart
 
