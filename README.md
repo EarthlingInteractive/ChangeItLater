@@ -1,6 +1,14 @@
 # The Phrebar Framework
 
-This project documents a framework for developing PHP web applications consisting of conventions for:
+Phrebar is the PHP framework used by
+[PHPTemplateProject](http://github.com/EarthlingInteractive/PHPTemplateProject)
+and any project based on it.
+
+This repository documents some of the philosophy behind it.
+More detailed technical documentation can be found in PHPTemplateProject itself,
+or in the repositories of libraries that it uses.
+
+The framework defines conventions for:
 
 - Project directory structure
 - Bootstrapping (all the procedural stuff that initializes the environment and kicks off request handling)
