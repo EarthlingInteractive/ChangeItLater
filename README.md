@@ -26,7 +26,7 @@ PHPProjectInitializer/bin/create-project -i --make everything
 ## Design goals
 
 - Keep the application developer in control by:
-  - Minimizing 'magic' and 'keep all the wires exposed'
+  - Minimizing 'magic' and attempting to 'keep all the wires exposed'
   - Attempting to balance re-usable code (which goes into libraries)
     with stuff that the application developer might want to change
     (which gets copied in as boilerplate)
