@@ -8,36 +8,12 @@ This repository documents some of the philosophy behind it.
 More detailed technical documentation can be found in PHPTemplateProject itself,
 or in the repositories of libraries that it uses.
 
-The framework defines conventions for:
 
-- Project directory structure
-- Bootstrapping (all the procedural stuff that initializes the environment and kicks off request handling)
-- Request routing
-- Action and response objects
-- Database access
-- Config files
-- View templates (PHP-based)
-- Authentication
-- Authorization
-- Logging
+## tl;dr
 
-It makes use of several related projects:
-
-- [PHPProjectInitializer](http://github.com/EarthlingInteractive/PHPProjectInitializer)
-  can be used to set up a new project following this pattern.
-- [PHPTemplateProject](http://github.com/EarthlingInteractive/PHPTemplateProject)
-  contains the template code used by PHPProjectInitializer.
-- [PHPProjectUtils](http://github.com/EarthlingInteractive/PHPProjectUtils)
-  contains utility scripts for building a project, including the running of database upgrade scripts.
-- [PHPSchema](https://github.com/EarthlingInteractive/PHPSchema)
-  defines classes for working with schema metadata.
-- [CMIP-REST](https://github.com/EarthlingInteractive/PHPCMIPREST)
-  implements REST API services based on a schema definition.
-- [PHPStorage](https://github.com/EarthlingInteractive/PHPStorage)
-  is the storage abstraction layer used by CMIP-REST, but is
-  also made available for use directly from application PHP code.
-
-## Super duper quickstart
+A web framwork that says
+"I think you should do it like X,
+but if you want to do it differently I won't get in your way"
 
 Prerequisites: PHP 5.4, Composer, Postgres.
 
@@ -47,7 +23,39 @@ PHPProjectInitializer/bin/create-project -i --make everything
 ```
 
 
+## Design goals
+
+- Keep the application developer in control by:
+  - Minimizing 'magic' and 'keep all the wires exposed'
+  - Attempting to balance re-usable code (which goes into libraries)
+    with stuff that the application developer might want to change
+    (which gets copied in as boilerplate)
+  - Holding 'frameworky' code to the same standards as library could world be,
+    such as namespacing and avoiding global variables
+- Define conventions and provide boilerplate code to support:
+  - Project directory structure, including deployment config files
+  - Bootstrapping (all the procedural stuff that initializes the environment and kicks off request handling)
+  - Request routing (deciding what to do based on a web request)
+  - Custom 'page actions'
+    (objects that are invoked to _do something_ in response to a web request)
+  - CRUD REST APIs (using [PHP CMIP-REST](https://github.com/EarthlingInteractive/PHPCMIPREST))
+  - Templated views
+  - Component classes
+  - Logging
+  - Error handling
+  - Authentication and authorization
+  - Common webapp features such as user logins
+  - Deploying to shared hosting environments
+  - Deploying using containers (e.g. Docker)[*](#containerization)
+- Separate construction of HTTP responses from actually sending them
+  using [Nife](https://github.com/ryprop/Nife) Blob and HTTP Reponse objects.
+
+
 ## Philosophy
+
+Someone tried to make me use Laravel once but it didn't work because I hated it too much.
+So I formalized some of the stuff I'd been doing things
+and called it "Phrebar" because rebar is cool and this is like the PHP version.
 
 The framework should be subservient to the application, not the other
 way around.  With regard to which specific technologies are used, it
@@ -194,10 +202,46 @@ cases, the component in charge of invoking actions will have to have
 rules for figuring out how to invoke the action based on its data.
 
 
+## Configuration
+
+Phrebar was designed to make deploying to shared hosting environments,
+but it should be just as easy to deploy the same codebase as
+a Docker image.
+
+For shared hosting, it's convenient to store deployment-specific
+configuration in files alongside the application code.  This is what the ```config/```
+directory is for.
+
+For containerized applications it's nice to store configuration in
+environment variables.  Newer versions of the framework support
+that as an alternative or in combination with config files
+via the [PHPConfigLoader](https://github.com/EarthlingInteractive/PHPConfigLoader)
+library, which can be easily shimmed into old applications, too.
+
+Application code can just call ```$component->getConfig("foo/bar")``` and not
+be concerned with how that config variable was stored.
+
+
+## Related projects
+
+- [PHPProjectInitializer](http://github.com/EarthlingInteractive/PHPProjectInitializer)
+  can be used to set up a new project following this pattern.
+- [PHPTemplateProject](http://github.com/EarthlingInteractive/PHPTemplateProject)
+  contains the template code used by PHPProjectInitializer.
+- [PHPProjectUtils](http://github.com/EarthlingInteractive/PHPProjectUtils)
+  contains utility scripts for building a project, including the running of database upgrade scripts.
+- [PHPSchema](https://github.com/EarthlingInteractive/PHPSchema)
+  defines classes for working with schema metadata.
+- [CMIP-REST](https://github.com/EarthlingInteractive/PHPCMIPREST)
+  implements REST API services based on a schema definition.
+- [PHPStorage](https://github.com/EarthlingInteractive/PHPStorage)
+  is the storage abstraction layer used by CMIP-REST, but is
+  also made available for use directly from application PHP code.
+
+
 ## Stuff that needs documenting
 
 - The registry object
 - Database functions and abstractions
-- How to manage config files
 - Best practices for using other packages
 - CMIP-REST (possibly just referring to documentation in its repository)
