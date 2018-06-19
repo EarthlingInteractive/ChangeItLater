@@ -46,7 +46,7 @@ PHPProjectInitializer/bin/create-project -i --make everything
   - Authentication and authorization
   - Common webapp features such as user logins
   - Deploying to shared hosting environments
-  - Deploying using containers (e.g. Docker)[*](#containerization)
+  - Deploying using containers (e.g. Docker)[*](#configuration)
 - Separate construction of HTTP responses from actually sending them
   using [Nife](https://github.com/ryprop/Nife) Blob and HTTP Reponse objects.
 
