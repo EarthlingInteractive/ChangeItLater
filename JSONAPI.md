@@ -10,7 +10,6 @@ And why I don't think it's worth bothering with.
   - Related objects can be embedded in each other
     e.g. a house might have residents, so you'd say ```{"residents": [{"name": "Bob"}, {"name":"Sally"}]}```
   - No 'links', 'linkages', 'self', 'related' needed.
-    - Can you even tell me what those things /mean/ in jsonapi.orgese?
 - JSONAPI.orgese uselessly combines data (the stuff you normally stuff in a JSON document)
   with metadata (that's all the links stuff).
   - A human would be able to make sense of the data without the extra metadata.
@@ -26,7 +25,6 @@ And why I don't think it's worth bothering with.
   - You'll probably end up using Obvious JSON for this part, anyway, so why not just use it throughout?
 - Following somebody else's standard for the sake of following a standard doesn't buy us anything.
 - JSONAPI.orgese isn't even a standard, yet.  They're on 'release candidate 3'.
-  - The reason it's taking them so long to make an official release is because it's overcomplicated.
   - The last thing we should be doing is standardizing on a convention that's still changing.
 - JSONAPI.org leaves some important bits unspecified
   - e.g. filtering ('Note: JSON API is agnostic about the strategies
