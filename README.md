@@ -204,9 +204,9 @@ rules for figuring out how to invoke the action based on its data.
 
 ## Configuration
 
-Phrebar was designed to make deploying to shared hosting environments,
-but it should be just as easy to deploy the same codebase as
-a Docker image.
+Phrebar was designed to simplify deploying to shared hosting environments,
+but now that containerization is a popular thing,
+it should be possible to deploy the exact same codebase as a Docker image.
 
 For shared hosting, it's convenient to store deployment-specific
 configuration in files alongside the application code.  This is what the ```config/```
@@ -217,7 +217,6 @@ environment variables.  Newer versions of the framework support
 that as an alternative or in combination with config files
 via the [PHPConfigLoader](https://github.com/EarthlingInteractive/PHPConfigLoader)
 library, which can be easily shimmed into old applications, too.
-
 Application code can just call ```$component->getConfig("foo/bar")``` and not
 be concerned with how that config variable was stored.
 
