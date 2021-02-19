@@ -54,7 +54,7 @@ PHPProjectInitializer/bin/create-project -i --make everything
 ## Philosophy
 
 Someone tried to make me use Laravel once but it didn't work because I hated it too much.
-So I formalized some of the stuff I'd been doing things
+So I formalized some of the ways I'd been doing things
 and called it "Phrebar" because rebar is cool and this is like the PHP version.
 
 The framework should be subservient to the application, not the other
